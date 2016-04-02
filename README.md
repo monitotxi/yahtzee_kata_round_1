@@ -34,3 +34,8 @@ The player will play categories in turn. The following is what you should see if
 	> Threes: [Total for Threes]
 	> Final score: [sum of the points in each category]
 	>
+
+## How to play
+
+    $ php play_yahtzee.php
+    

@@ -61,9 +61,9 @@ class ConsoleNotifier
     }
 
     /**
-     * @param DiceRoller $dice
+     * @param Dice $dice
      */
-    public function dice(DiceRoller $dice)
+    public function dice(Dice $dice)
     {
         $results = $dice->getResults();
         $line = 'Dice: ';

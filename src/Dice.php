@@ -2,7 +2,7 @@
 
 namespace Yahtzee;
 
-class DiceRoller
+class Dice
 {
     /**
      * @var array

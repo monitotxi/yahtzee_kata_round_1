@@ -5,9 +5,9 @@ namespace Yahtzee;
 class Round
 {
     /**
-     * @var DiceRoller
+     * @var Dice
      */
-    private $diceRoller;
+    private $dice;
     /**
      * @var InputLine
      */
@@ -20,27 +20,27 @@ class Round
     /**
      * Round constructor.
      *
-     * @param DiceRoller      $diceRoller
+     * @param Dice            $dice
      * @param InputLine       $inputLine
      * @param ConsoleNotifier $consoleNotifier
      */
-    public function __construct(DiceRoller $diceRoller, InputLine $inputLine, ConsoleNotifier $consoleNotifier)
+    public function __construct(Dice $dice, InputLine $inputLine, ConsoleNotifier $consoleNotifier)
     {
-        $this->diceRoller = $diceRoller;
+        $this->dice = $dice;
         $this->inputLine = $inputLine;
         $this->consoleNotifier = $consoleNotifier;
     }
 
     /**
-     * @return DiceRoller
+     * @return Dice
      */
     public function run()
     {
-        $this->diceRoller->rollAll();
-        $this->consoleNotifier->dice($this->diceRoller);
+        $this->dice->rollAll();
+        $this->consoleNotifier->dice($this->dice);
         $this->reRun();
 
-        return $this->diceRoller;
+        return $this->dice;
     }
 
     private function reRun()
@@ -72,7 +72,7 @@ class Round
      */
     private function reRunDice($diceToReRoll)
     {
-        $this->diceRoller->roll($diceToReRoll);
-        $this->consoleNotifier->dice($this->diceRoller);
+        $this->dice->roll($diceToReRoll);
+        $this->consoleNotifier->dice($this->dice);
     }
 }

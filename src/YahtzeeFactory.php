@@ -47,7 +47,7 @@ class YahtzeeFactory
      *
      * @return Round
      *
-     * @internal param $diceRoller
+     * @internal param $dice
      */
     private static function makeRound(
         ConsoleInterface $console,
@@ -55,7 +55,7 @@ class YahtzeeFactory
         DieRollerInterface $dieRoller
     ) {
         return new Round(
-            self::makeDiceRoller($dieRoller),
+            self::makeDice($dieRoller),
             new InputLine($console),
             $consoleNotifier
         );
@@ -64,15 +64,15 @@ class YahtzeeFactory
     /**
      * @param DieRollerInterface $dieRoller
      *
-     * @return DiceRoller
+     * @return Dice
      */
-    public static function makeDiceRoller(DieRollerInterface $dieRoller)
+    public static function makeDice(DieRollerInterface $dieRoller)
     {
         $dice = [];
         for ($i = 1; $i <= 5; ++$i) {
             $dice[$i] = new PlayerDie($dieRoller);
         }
 
-        return new DiceRoller($dice);
+        return new Dice($dice);
     }
 }

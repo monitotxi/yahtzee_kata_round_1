@@ -1,6 +1,6 @@
 <?php
 
-use Yahtzee\DiceRoller;
+use Yahtzee\Dice;
 use Yahtzee\DieRollerInterface;
 use Yahtzee\ScoreCalculator;
 use Yahtzee\YahtzeeFactory;
@@ -21,13 +21,13 @@ class ScoreCalculatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return DiceRoller
+     * @return Dice
      */
     private function getDice()
     {
         $dieRoller = $this->getMock(DieRollerInterface::class);
         $dieRoller->method('roll')->willReturnOnConsecutiveCalls(2, 1, 5, 1, 3);
-        $dice = YahtzeeFactory::makeDiceRoller($dieRoller);
+        $dice = YahtzeeFactory::makeDice($dieRoller);
         $dice->rollAll();
 
         return $dice;

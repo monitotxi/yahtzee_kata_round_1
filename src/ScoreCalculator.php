@@ -5,15 +5,15 @@ namespace Yahtzee;
 class ScoreCalculator
 {
     /**
-     * @param int        $value
-     * @param DiceRoller $diceRoller
+     * @param int  $value
+     * @param Dice $dice
      *
      * @return int
      */
-    public function calculate($value, DiceRoller $diceRoller)
+    public function calculate($value, Dice $dice)
     {
         $score = 0;
-        $results = $diceRoller->getResults();
+        $results = $dice->getResults();
         foreach ($results as $dieValue) {
             if ($dieValue === $value) {
                 ++$score;

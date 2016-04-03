@@ -40,11 +40,11 @@ class Category
     }
 
     /**
-     * @param DiceRoller $dice
+     * @param Dice $dice
      *
      * @return mixed
      */
-    public function getScore(DiceRoller $dice)
+    public function getScore(Dice $dice)
     {
         return $this->scoreCalculator->calculate($this->value, $dice);
     }

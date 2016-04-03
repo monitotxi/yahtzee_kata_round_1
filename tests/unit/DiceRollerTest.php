@@ -3,7 +3,7 @@
 use Yahtzee\DieRollerInterface;
 use Yahtzee\YahtzeeFactory;
 
-class DiceRollerTest extends PHPUnit_Framework_TestCase
+class DiceTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @test
@@ -11,9 +11,9 @@ class DiceRollerTest extends PHPUnit_Framework_TestCase
     public function have_5_dice()
     {
         $dieRoller = $this->getMock(DieRollerInterface::class);
-        $diceRoller = YahtzeeFactory::makeDiceRoller($dieRoller);
-        $diceRoller->rollAll();
-        $this->assertCount(5, $diceRoller->getResults());
+        $dice = YahtzeeFactory::makeDice($dieRoller);
+        $dice->rollAll();
+        $this->assertCount(5, $dice->getResults());
     }
 
     /**
@@ -23,9 +23,9 @@ class DiceRollerTest extends PHPUnit_Framework_TestCase
     {
         $dieRoller = $this->getMock(DieRollerInterface::class);
         $dieRoller->method('roll')->will($this->onConsecutiveCalls(3, 4, 6, 5, 1, 2, 5));
-        $diceRoller = YahtzeeFactory::makeDiceRoller($dieRoller);
-        $diceRoller->rollAll();
-        $diceRoller->roll([1, 3]);
+        $dice = YahtzeeFactory::makeDice($dieRoller);
+        $dice->rollAll();
+        $dice->roll([1, 3]);
         $expected = [
             1 => 2,
             2 => 4,
@@ -33,6 +33,6 @@ class DiceRollerTest extends PHPUnit_Framework_TestCase
             4 => 5,
             5 => 1,
         ];
-        $this->assertEquals($expected, $diceRoller->getResults());
+        $this->assertEquals($expected, $dice->getResults());
     }
 }

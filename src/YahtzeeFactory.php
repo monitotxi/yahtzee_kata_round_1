@@ -46,8 +46,6 @@ class YahtzeeFactory
      * @param DieRollerInterface $dieRoller
      *
      * @return Round
-     *
-     * @internal param $dice
      */
     private static function makeRound(
         ConsoleInterface $console,
